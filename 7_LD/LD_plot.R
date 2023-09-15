@@ -47,8 +47,6 @@ setwd("~/medin297@umn.edu - Google Drive/My Drive/GSDIG-selected/7_LD/")
 dim(ldout$ldmat)
 ldout$ldmat[1:5,1:5]
 
-
-
 lev1 <- mout_2$snpdf$snp
 length(lev1)
 lev1[1:5]
@@ -57,7 +55,6 @@ lev2 <- as.data.frame(lev1)
 lev2 <- lev2 %>% separate(1, c("Chr", "position"), sep = "_", remove = F, convert = FALSE, extra = "merge")
 lev2$Chr <- as.factor(lev2$Chr)
 levels(lev2$Chr)
-
 
 # lev2$marker <- gsub(":", "_", lev2$marker)
 # lev2 <- lev2 %>% separate(2, c("Chr", "position"), sep = "_", remove = F, convert = FALSE, extra = "merge")
@@ -173,7 +170,9 @@ head(newfile)
 newfile$Dist_kb <- newfile$R3.dist/1000
 head(R3)
 
-ggplot(newfile, aes(x = R3.dist, y = newrsq)) + geom_line() + xlim(0, 1000000) + theme_bw() + geom_hline(yintercept=0.1, linetype="dashed", color = "gray") + geom_vline(xintercept = halfdecaydist)
+ggplot(newfile, aes(x = R3.dist, y = newrsq)) + geom_line() + xlim(0, 1000000) + theme_bw()
+
+# + geom_hline(yintercept=0.1, linetype="dashed", color = "gray") + geom_vline(xintercept = halfdecaydist)
 
 plot1 <- ggplot(newfile, aes(x = Dist_kb, y = newrsq)) + geom_line() + ylim(0, 0.2) + scale_x_continuous(limits = c(0, 1000), breaks = seq(0, 1000, by = 200)) + theme_classic(base_family = "Arial", base_size = 12) + geom_hline(yintercept=0.1, linetype="dashed", color = "gray") + geom_vline(xintercept = (halfdecaydist/1000), linetype="dashed", color = "blue") + labs(y = expression(LD ~ (r^2)), x = "Distance (kb)")
 

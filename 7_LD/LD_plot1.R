@@ -38,17 +38,8 @@ for (i in 1:length(lev12)) {
 
 
 
-gp <- format_multidog(x = mout_2, varname = paste0("Pr_", 0:ploidy))
-class(gp)
-dim(gp)
 
-gp
-arr2 <- alply(arr1, 2, .dims = T)
-arr3 <- array( unlist(arr2) , dim = c( 4 ,3 , 2 ))
-class(arr3)
-dim(arr3)
-
-arr2 <- alply(gp, 3,  .dims = T)
+arr2 <- alply(gp1, 3,  .dims = T)
 
 # lev5
 lev11 <- list()
